@@ -3,6 +3,8 @@ CMSC 495
 Group 5 Project Repository
 I can updates RNBURKE
 
+Larry --Testing if I can update
+
 I will post this in its own document but here are the query statements that work.  I just added more records
 to the database with these statements.  If you intend to leave it blank, you must still use the first line and 
 on the second line place a blank space   ''   where that field would go.  
