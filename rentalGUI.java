@@ -44,12 +44,12 @@ public class videoRentalGUI extends javax.swing.JFrame {
         queryCustomerPhoneLabel = new javax.swing.JLabel();
         queryCustomerLastNameLabel = new javax.swing.JLabel();
         queryCustomerFirstNameText = new javax.swing.JTextField();
-        queryCustomerButton = new javax.swing.JButton();
+        queryCustomerSearchButton = new javax.swing.JButton();
         queryCustomerPhoneNumberText = new javax.swing.JTextField();
         queryCustomerNameAddLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
+        queryCustomerListPane = new javax.swing.JScrollPane();
+        queryCustomerSearchList = new javax.swing.JList();
+        queryCustomerEditButton = new javax.swing.JButton();
         mainInventoryTab = new javax.swing.JPanel();
         inventorySubTabs = new javax.swing.JTabbedPane();
         movieAdd = new javax.swing.JPanel();
@@ -87,28 +87,28 @@ public class videoRentalGUI extends javax.swing.JFrame {
         queryMovieYearLabel = new javax.swing.JLabel();
         queryMovieDirectorText = new javax.swing.JTextField();
         queryMovieDirectorLabel = new javax.swing.JLabel();
-        queryMovieButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jButton2 = new javax.swing.JButton();
+        queryMovieSearchButton = new javax.swing.JButton();
+        queryMovieListPane = new javax.swing.JScrollPane();
+        queryMovieList = new javax.swing.JList();
+        queryMovieScrollBar = new javax.swing.JScrollBar();
+        queryMovieEditButton = new javax.swing.JButton();
         mainTransactionsTab = new javax.swing.JPanel();
         transactionsSubTab = new javax.swing.JTabbedPane();
         transactionsCheckOutTab = new javax.swing.JPanel();
         transactionsCheckOutCustomerIDLabel = new javax.swing.JLabel();
         transactionsCheckOutCustomerIDText = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        transactionsCheckOutListPane = new javax.swing.JScrollPane();
+        transactionsCheckOutList = new javax.swing.JList();
         transactionsCheckOutButton = new javax.swing.JButton();
         transactionsCheckOutLateFeeButton = new javax.swing.JButton();
-        jScrollBar3 = new javax.swing.JScrollBar();
+        transactionsCheckOutLScrollBar = new javax.swing.JScrollBar();
         transactionsCheckOutSearchButton = new javax.swing.JButton();
         transactionsCheckInTab = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
+        transactionsCheckInListPane = new javax.swing.JScrollPane();
+        transactionsCheckInList = new javax.swing.JList();
         transactionsCheckInButton = new javax.swing.JButton();
         transactionsCheckInLateFeeButton = new javax.swing.JButton();
-        jScrollBar2 = new javax.swing.JScrollBar();
+        transactionsCheckInScrollBar = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Video Rental Program Group 5");
@@ -117,6 +117,11 @@ public class videoRentalGUI extends javax.swing.JFrame {
         mainTabPanel.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         addCustomerButton.setText("Add");
+        addCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCustomerButtonActionPerformed(evt);
+            }
+        });
 
         addCustomerNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         addCustomerNameLabel.setText("Customer Name");
@@ -289,21 +294,31 @@ public class videoRentalGUI extends javax.swing.JFrame {
             }
         });
 
-        queryCustomerButton.setText("Search");
+        queryCustomerSearchButton.setText("Search");
+        queryCustomerSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queryCustomerSearchButtonActionPerformed(evt);
+            }
+        });
 
         queryCustomerPhoneNumberText.setToolTipText("1-222-222-2222");
 
         queryCustomerNameAddLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         queryCustomerNameAddLabel.setText("Customer Name");
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        queryCustomerSearchList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "List 1", "List 2", "List 3" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        queryCustomerListPane.setViewportView(queryCustomerSearchList);
 
-        jButton1.setText("Edit");
+        queryCustomerEditButton.setText("Edit");
+        queryCustomerEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queryCustomerEditButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout customerQueryLayout = new javax.swing.GroupLayout(customerQuery);
         customerQuery.setLayout(customerQueryLayout);
@@ -314,9 +329,9 @@ public class videoRentalGUI extends javax.swing.JFrame {
                 .addGroup(customerQueryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerQueryLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(queryCustomerEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(queryCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(queryCustomerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(customerQueryLayout.createSequentialGroup()
                         .addGroup(customerQueryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(queryCustomerNameAddLabel)
@@ -327,7 +342,7 @@ public class videoRentalGUI extends javax.swing.JFrame {
                             .addComponent(queryCustomerPhoneLabel)
                             .addComponent(queryCustomerPhoneNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(queryCustomerListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -350,11 +365,11 @@ public class videoRentalGUI extends javax.swing.JFrame {
                         .addComponent(queryCustomerPhoneLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(queryCustomerPhoneNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(queryCustomerListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(customerQueryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(queryCustomerButton)
-                    .addComponent(jButton1))
+                    .addComponent(queryCustomerSearchButton)
+                    .addComponent(queryCustomerEditButton))
                 .addContainerGap())
         );
 
@@ -473,6 +488,11 @@ public class videoRentalGUI extends javax.swing.JFrame {
         removeMovieIDLabel.setText("Movie ID");
 
         removeMovieButton.setText("Delete");
+        removeMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMovieButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout movieRemoveLayout = new javax.swing.GroupLayout(movieRemove);
         movieRemove.setLayout(movieRemoveLayout);
@@ -525,16 +545,26 @@ public class videoRentalGUI extends javax.swing.JFrame {
 
         queryMovieDirectorLabel.setText("Director");
 
-        queryMovieButton.setText("Search");
+        queryMovieSearchButton.setText("Search");
+        queryMovieSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queryMovieSearchButtonActionPerformed(evt);
+            }
+        });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        queryMovieList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "List 1", "List 2", "List 3" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        queryMovieListPane.setViewportView(queryMovieList);
 
-        jButton2.setText("Edit");
+        queryMovieEditButton.setText("Edit");
+        queryMovieEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queryMovieEditButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout movieQueryLayout = new javax.swing.GroupLayout(movieQuery);
         movieQuery.setLayout(movieQueryLayout);
@@ -566,13 +596,13 @@ public class videoRentalGUI extends javax.swing.JFrame {
                                     .addComponent(queryMovieYearText)
                                     .addComponent(queryMovieDirectorText))))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(queryMovieListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(queryMovieScrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, movieQueryLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(queryMovieEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(queryMovieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(queryMovieSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         movieQueryLayout.setVerticalGroup(
@@ -608,12 +638,12 @@ public class videoRentalGUI extends javax.swing.JFrame {
                         .addGroup(movieQueryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(queryMovieDirectorLabel)
                             .addComponent(queryMovieDirectorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(queryMovieScrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(queryMovieListPane))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                 .addGroup(movieQueryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(queryMovieButton)
-                    .addComponent(jButton2))
+                    .addComponent(queryMovieSearchButton)
+                    .addComponent(queryMovieEditButton))
                 .addContainerGap())
         );
 
@@ -636,16 +666,26 @@ public class videoRentalGUI extends javax.swing.JFrame {
 
         transactionsCheckOutCustomerIDLabel.setText("Customer ID");
 
-        jList4.setModel(new javax.swing.AbstractListModel() {
+        transactionsCheckOutList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "List 1", "List 2", "List 3" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        transactionsCheckOutListPane.setViewportView(transactionsCheckOutList);
 
         transactionsCheckOutButton.setText("Check Out");
+        transactionsCheckOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionsCheckOutButtonActionPerformed(evt);
+            }
+        });
 
         transactionsCheckOutLateFeeButton.setText("Late Fee");
+        transactionsCheckOutLateFeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionsCheckOutLateFeeButtonActionPerformed(evt);
+            }
+        });
 
         transactionsCheckOutSearchButton.setText("Search");
 
@@ -657,9 +697,9 @@ public class videoRentalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(transactionsCheckOutTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(transactionsCheckOutTabLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4)
+                        .addComponent(transactionsCheckOutListPane)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(transactionsCheckOutLScrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(transactionsCheckOutTabLayout.createSequentialGroup()
                         .addComponent(transactionsCheckOutCustomerIDLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -684,8 +724,8 @@ public class videoRentalGUI extends javax.swing.JFrame {
                     .addComponent(transactionsCheckOutSearchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(transactionsCheckOutTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
+                    .addComponent(transactionsCheckOutLScrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transactionsCheckOutListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(transactionsCheckOutTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transactionsCheckOutButton)
@@ -695,12 +735,12 @@ public class videoRentalGUI extends javax.swing.JFrame {
 
         transactionsSubTab.addTab("Check Out", transactionsCheckOutTab);
 
-        jList3.setModel(new javax.swing.AbstractListModel() {
+        transactionsCheckInList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "List 1", "List 2", "List 3" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        transactionsCheckInListPane.setViewportView(transactionsCheckInList);
 
         transactionsCheckInButton.setText("Check In");
         transactionsCheckInButton.addActionListener(new java.awt.event.ActionListener() {
@@ -710,6 +750,11 @@ public class videoRentalGUI extends javax.swing.JFrame {
         });
 
         transactionsCheckInLateFeeButton.setText("Late Fee");
+        transactionsCheckInLateFeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionsCheckInLateFeeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout transactionsCheckInTabLayout = new javax.swing.GroupLayout(transactionsCheckInTab);
         transactionsCheckInTab.setLayout(transactionsCheckInTabLayout);
@@ -724,9 +769,9 @@ public class videoRentalGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(transactionsCheckInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(transactionsCheckInTabLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
+                        .addComponent(transactionsCheckInListPane)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(transactionsCheckInScrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         transactionsCheckInTabLayout.setVerticalGroup(
@@ -734,8 +779,8 @@ public class videoRentalGUI extends javax.swing.JFrame {
             .addGroup(transactionsCheckInTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(transactionsCheckInTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                    .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(transactionsCheckInListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(transactionsCheckInScrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(transactionsCheckInTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transactionsCheckInButton)
@@ -810,6 +855,42 @@ public class videoRentalGUI extends javax.swing.JFrame {
         // TODO 
     }                                                         
 
+    private void removeMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO 
+    }                                                 
+
+    private void queryMovieSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        // TODO 
+    }                                                      
+
+    private void queryMovieEditButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        // TODO 
+    }                                                    
+
+    private void transactionsCheckInLateFeeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                                 
+        // TODO 
+    }                                                                
+
+    private void transactionsCheckOutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+        // TODO 
+    }                                                          
+
+    private void transactionsCheckOutLateFeeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        // TODO 
+    }                                                                 
+
+    private void queryCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        // TODO 
+    }                                                         
+
+    private void queryCustomerEditButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        // TODO 
+    }                                                       
+
+    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO 
+    }                                                 
+
     public static void main(String args[]) {
             try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -877,19 +958,6 @@ public class videoRentalGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane customerSubTabs;
     private javax.swing.JButton deleteCustomerButton;
     private javax.swing.JTabbedPane inventorySubTabs;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
-    private javax.swing.JList jList3;
-    private javax.swing.JList jList4;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
-    private javax.swing.JScrollBar jScrollBar3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel mainCustomerTab;
     private javax.swing.JPanel mainInventoryTab;
     private javax.swing.JTabbedPane mainTabPanel;
@@ -897,23 +965,30 @@ public class videoRentalGUI extends javax.swing.JFrame {
     private javax.swing.JPanel movieAdd;
     private javax.swing.JPanel movieQuery;
     private javax.swing.JPanel movieRemove;
-    private javax.swing.JButton queryCustomerButton;
+    private javax.swing.JButton queryCustomerEditButton;
     private javax.swing.JLabel queryCustomerFirstNameLabel;
     private javax.swing.JTextField queryCustomerFirstNameText;
     private javax.swing.JLabel queryCustomerLastNameLabel;
     private javax.swing.JTextField queryCustomerLastNameText;
+    private javax.swing.JScrollPane queryCustomerListPane;
     private javax.swing.JLabel queryCustomerNameAddLabel;
     private javax.swing.JLabel queryCustomerPhoneLabel;
     private javax.swing.JTextField queryCustomerPhoneNumberText;
-    private javax.swing.JButton queryMovieButton;
+    private javax.swing.JButton queryCustomerSearchButton;
+    private javax.swing.JList queryCustomerSearchList;
     private javax.swing.JLabel queryMovieDirectorLabel;
     private javax.swing.JTextField queryMovieDirectorText;
+    private javax.swing.JButton queryMovieEditButton;
     private javax.swing.JLabel queryMovieIDLabel;
     private javax.swing.JTextField queryMovieIDText;
     private javax.swing.JLabel queryMovieLengthLabel;
     private javax.swing.JTextField queryMovieLengthText;
+    private javax.swing.JList queryMovieList;
+    private javax.swing.JScrollPane queryMovieListPane;
     private javax.swing.JLabel queryMovieRatingLabel;
     private javax.swing.JTextField queryMovieRatingText;
+    private javax.swing.JScrollBar queryMovieScrollBar;
+    private javax.swing.JButton queryMovieSearchButton;
     private javax.swing.JLabel queryMovieTitleLabel;
     private javax.swing.JTextField queryMovieTitleText;
     private javax.swing.JComboBox queryMovieTypeDropDownText;
@@ -925,11 +1000,17 @@ public class videoRentalGUI extends javax.swing.JFrame {
     private javax.swing.JTextField removeMovieIDText;
     private javax.swing.JButton transactionsCheckInButton;
     private javax.swing.JButton transactionsCheckInLateFeeButton;
+    private javax.swing.JList transactionsCheckInList;
+    private javax.swing.JScrollPane transactionsCheckInListPane;
+    private javax.swing.JScrollBar transactionsCheckInScrollBar;
     private javax.swing.JPanel transactionsCheckInTab;
     private javax.swing.JButton transactionsCheckOutButton;
     private javax.swing.JLabel transactionsCheckOutCustomerIDLabel;
     private javax.swing.JTextField transactionsCheckOutCustomerIDText;
+    private javax.swing.JScrollBar transactionsCheckOutLScrollBar;
     private javax.swing.JButton transactionsCheckOutLateFeeButton;
+    private javax.swing.JList transactionsCheckOutList;
+    private javax.swing.JScrollPane transactionsCheckOutListPane;
     private javax.swing.JButton transactionsCheckOutSearchButton;
     private javax.swing.JPanel transactionsCheckOutTab;
     private javax.swing.JTabbedPane transactionsSubTab;
